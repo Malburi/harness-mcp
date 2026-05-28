@@ -1,7 +1,6 @@
 ---
 name: analyzer
 description: Analyzes a project codebase to detect tech stack, architecture layers, coding conventions, request flow, data access patterns, and build commands. Called by harness-init as Phase 1. Returns a structured analysis report used by the writer agent.
-model: claude-opus-4-7
 ---
 
 # Analyzer Agent
