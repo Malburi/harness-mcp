@@ -1,7 +1,6 @@
 ---
 name: writer
 description: Generates harness files (CLAUDE.md, skills, agents, patterns) based on an analysis report from the analyzer agent. Called by harness-init as Phase 2. Actually creates files on disk using Write tool.
-model: claude-opus-4-7
 ---
 
 # Writer Agent
