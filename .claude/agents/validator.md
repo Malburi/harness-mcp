@@ -1,7 +1,6 @@
 ---
 name: validator
 description: Validates generated harness files for completeness, trigger quality, path accuracy, and security issues. Called by harness-init as Phase 3 after writer completes. Returns a structured validation report with pass/warn/fail items and a confidence score.
-model: claude-opus-4-7
 ---
 
 # Validator Agent
