@@ -15,4 +15,3 @@
 - revfactory/harness의 구조적 패턴(skills/, agents/, 경량 CLAUDE.md, 피드백 루프) 적용
 - xu43 harness의 도메인 특화 깊이를 analyzer가 자동 추출하는 방식으로 일반화
 - static stacks/ 프리셋 대신 코드베이스 분석 기반 동적 생성 채택
-- 모든 에이전트 `model: claude-opus-4-7` 지정
