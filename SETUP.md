@@ -4,15 +4,57 @@
 
 ---
 
-## 1단계: 템플릿으로 저장소 생성
+## 방법 1: MCP 플러그인 (권장)
+
+### 1단계: MCP 서버 등록 (최초 1회)
+
+```bash
+claude mcp add harness -s user -- npx github:Malburi/harness-mcp
+```
+
+등록 확인:
+```bash
+claude mcp list
+# harness: npx github:Malburi/harness-mcp - ✓ Connected
+```
+
+### 2단계: 프로젝트에 harness 설치
+
+대상 프로젝트 루트에서 Claude Code 실행 후:
+
+```
+이 프로젝트에 harness 설치해줘
+```
+
+Claude가 `harness_install` 도구를 호출해 `.claude/` 폴더를 자동으로 복사합니다.
+
+### 3단계: harness 초기화
+
+```
+harness 초기화해줘
+```
+
+analyzer → writer → validator 순서로 자동 진행됩니다.
+
+### 4단계: 생성된 파일 커밋
+
+```bash
+git add CLAUDE.md .claude/
+git commit -m "docs: add project harness"
+git push
+```
+
+---
+
+## 방법 2: 수동 설치 (MCP 없이)
+
+### 1단계: 템플릿으로 저장소 생성
 
 1. https://github.com/Malburi/harness-mcp 접속
 2. **"Use this template"** → **"Create a new repository"**
 3. 저장소 이름 예: `myproject-harness`
 
----
-
-## 2단계: 대상 프로젝트에 .claude/ 복사
+### 2단계: 대상 프로젝트에 .claude/ 복사
 
 ```bash
 # harness 저장소 clone
@@ -30,9 +72,7 @@ Copy-Item -Recurse temp-harness\.claude\ [대상-프로젝트]\
 Remove-Item -Recurse -Force temp-harness
 ```
 
----
-
-## 3단계: harness 초기화
+### 3단계: harness 초기화
 
 대상 프로젝트 루트에서 Claude Code 실행 후:
 
@@ -40,17 +80,7 @@ Remove-Item -Recurse -Force temp-harness
 harness 초기화해줘
 ```
 
-또는
-
-```
-이 프로젝트 분석해서 harness 만들어줘
-```
-
-analyzer → writer → validator 순서로 자동 진행됩니다.
-
----
-
-## 4단계: 생성된 파일 커밋
+### 4단계: 생성된 파일 커밋
 
 ```bash
 git add CLAUDE.md .claude/
@@ -90,6 +120,7 @@ validator 리포트에서 보완 항목이 나왔을 때:
 
 | 증상 | 해결 |
 |------|------|
+| MCP 서버가 연결되지 않음 | `claude mcp list`로 상태 확인 후 재등록 |
 | 스킬이 트리거되지 않음 | `.claude/skills/` 폴더가 프로젝트 루트에 있는지 확인 |
 | 스택이 잘못 탐지됨 | "이 프로젝트는 [스택]을 사용해" 라고 명시 후 재시도 |
 | 경로가 실제와 다름 | "서비스 클래스는 실제로 [경로]에 있어" 라고 보정 |
