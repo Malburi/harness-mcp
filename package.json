@@ -1,0 +1,27 @@
+{
+  "name": "harness-mcp",
+  "version": "1.0.0",
+  "description": "Claude Code harness auto-generator — MCP plugin",
+  "type": "module",
+  "bin": {
+    "harness-mcp": "index.js"
+  },
+  "files": [
+    "index.js",
+    ".claude/"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "mcp",
+    "harness",
+    "ai"
+  ],
+  "license": "MIT"
+}
