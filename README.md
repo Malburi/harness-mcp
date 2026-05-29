@@ -1,19 +1,41 @@
 # harness-mcp
 
-Claude Code harness 자동 생성 템플릿.
+Claude Code harness 자동 생성 **MCP 플러그인**.
 
 프로젝트 코드베이스를 분석해 **프로젝트 전용** CLAUDE.md, skills, agents, patterns를 자동 생성합니다.  
 Java EE / Spring Boot / Node.js / Python / Go 등 스택을 자동 탐지하며, 커스텀 프레임워크(Coperframe 등)도 실제 코드에서 패턴을 추출합니다.
 
 ## 빠른 시작
 
-```
-1. 이 저장소를 GitHub 템플릿으로 새 저장소 생성 (Use this template 버튼)
-2. 생성된 저장소의 .claude/ 폴더를 대상 프로젝트에 복사
-3. 대상 프로젝트 루트에서 Claude Code 실행 후: "harness 초기화해줘"
+### 방법 1: MCP 플러그인 (권장)
+
+```bash
+# 1. MCP 서버 등록 (최초 1회)
+claude mcp add harness -s user -- npx github:Malburi/harness-mcp
+
+# 2. 원하는 프로젝트에서 Claude Code 실행 후
+"이 프로젝트에 harness 설치해줘"
+
+# 3. 설치 완료 후
+"harness 초기화해줘"
 ```
 
 5분 이내에 프로젝트 전용 harness가 생성됩니다.
+
+### 방법 2: 수동 설치 (MCP 없이)
+
+```bash
+# 1. 이 저장소를 GitHub 템플릿으로 새 저장소 생성 (Use this template 버튼)
+# 2. 생성된 저장소의 .claude/ 폴더를 대상 프로젝트에 복사
+# 3. 대상 프로젝트 루트에서 Claude Code 실행 후: "harness 초기화해줘"
+```
+
+## MCP 도구
+
+| 도구 | 설명 |
+|------|------|
+| `harness_install` | 대상 프로젝트에 `.claude/` 템플릿 파일 설치 |
+| `harness_status` | 프로젝트의 harness 설치/초기화 상태 확인 |
 
 ## 생성 결과물
 
@@ -60,10 +82,7 @@ harness-init 스킬 (오케스트레이터)
 | `.claude/agents/analyzer.md` | 스택 탐지 + 패턴 추출 |
 | `.claude/agents/writer.md` | harness 파일 생성 |
 | `.claude/agents/validator.md` | 생성 결과 검증 |
-
-## 팀 배포
-
-[SETUP.md](SETUP.md) 참고
+| `index.js` | MCP 서버 (`harness_install`, `harness_status` 도구) |
 
 ## 재초기화
 
@@ -74,6 +93,10 @@ harness 다시 초기화해줘
 ```
 
 기존 파일은 `.claude/backup/YYYYMMDD-HHMMSS/`에 자동 백업됩니다.
+
+## 팀 배포
+
+[SETUP.md](SETUP.md) 참고
 
 ## 라이선스
 
